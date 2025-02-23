@@ -13,7 +13,7 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
     className="bebas-neue-font"
     style={{
       textDecoration: 'none',
-      color: 'var(--mantine-color-text)',
+      color: 'white',
       padding: '8px 12px',
       fontWeight: 'bold',
       fontSize: '24px',
@@ -38,7 +38,7 @@ const MobileNavLink = ({
     onClick={onClick}
     style={{
       textDecoration: 'none',
-      color: 'var(--mantine-color-text)',
+      color: 'white',
       padding: '12px',
       fontWeight: 'bold',
       fontSize: '20px',
@@ -64,19 +64,19 @@ export default function Header() {
 
   return (
     <Box bg="var(--mantine-color-blue-3)" style={{ position: 'sticky', top: 0, zIndex: 1000 }}>
-      <Group justify="space-between" h={80} px="md">
+      <Group justify="space-between" h={{ base: 60, sm: 80 }} px={{ base: 'xs', sm: 'md' }}>
         {/* Logo and Burger Section */}
         <Group>
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm" color="white" />
           <Box style={{ position: 'relative' }}>
-            <Logo size={50} href="/" variant="white" />
+            <Logo size={{ base: 40, sm: 50 }} href="/" variant="white" />
           </Box>
         </Group>
 
         {/* Desktop Navigation */}
-        <Group gap="md" visibleFrom="sm">
+        <Group gap={{ base: 'xs', sm: 'md' }} visibleFrom="md">
           <Link href="https://www.instagram.com/unc/" target="_blank">
-            <ThemeIcon size={35} color="var(--mantine-color-text)" variant="transparent">
+            <ThemeIcon size={35} color="white" variant="transparent">
               <IconBrandInstagram size="25" />
             </ThemeIcon>
           </Link>
@@ -97,8 +97,19 @@ export default function Header() {
           onClose={close}
           size="100%"
           padding="md"
-          hiddenFrom="sm"
-          title={<Logo size={40} href="/" />}
+          hiddenFrom="md"
+          title={<Logo size={40} href="/" variant="white" />}
+          styles={{
+            content: {
+              backgroundColor: 'var(--mantine-color-blue-3)',
+            },
+            header: {
+              backgroundColor: 'var(--mantine-color-blue-3)',
+            },
+            close: {
+              color: 'white',
+            },
+          }}
         >
           <Box mt="xl">
             <Link
@@ -107,20 +118,14 @@ export default function Header() {
               style={{ textDecoration: 'none' }}
             >
               <Group align="center" mb="md">
-                <ThemeIcon size={30} color="var(--mantine-color-text)" variant="transparent">
+                <ThemeIcon size={30} color="white" variant="transparent">
                   <IconBrandInstagram size="24" />
                 </ThemeIcon>
-                <span className="bebas-neue-font" style={{ fontSize: '20px' }}>
+                <span className="bebas-neue-font" style={{ fontSize: '20px', color: 'white' }}>
                   Instagram
                 </span>
               </Group>
             </Link>
-
-            {/* {teamDropdownLinks.map((link, index) => (
-              <MobileNavLink key={index} href={link.href} onClick={close}>
-                {link.label}
-              </MobileNavLink>
-            ))} */}
 
             {navLinks.map((link, index) => (
               <MobileNavLink key={index} href={link.href} onClick={close}>

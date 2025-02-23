@@ -54,6 +54,7 @@ export default function RosterPage() {
         .from('roster')
         .select('*')
         .eq('roster_year_id', selectedRoster)
+        .order('is_staff', { ascending: true })
         .order('number');
 
       if (error) {

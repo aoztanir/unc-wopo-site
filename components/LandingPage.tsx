@@ -107,6 +107,7 @@ export default function LandingPage() {
             .from('roster')
             .select('*')
             .eq('roster_year_id', currentYear.id)
+            .order('is_staff', { ascending: true })
             .order('number');
 
           if (playerError) {
@@ -134,6 +135,7 @@ export default function LandingPage() {
         .from('roster')
         .select('*')
         .eq('roster_year_id', selectedRoster)
+        .order('is_staff', { ascending: true })
         .order('number');
 
       if (error) {
