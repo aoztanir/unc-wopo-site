@@ -1,0 +1,10 @@
+.root {
+  &[data-variant='contrast'] {
+    background-color: var(--custom-contrast-color);
+    color: var(--custom-contrast-color-text);
+  }
+}
+.cardRoot {
+  border-color: light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-6));
+  background-color: light-dark(white, var(--mantine-color-dark-9));
+}
