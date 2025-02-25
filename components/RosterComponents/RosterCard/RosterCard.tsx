@@ -1,7 +1,8 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { GraduationCap, House, NumberCircleOne, Trophy, User } from '@phosphor-icons/react';
 import { UserCircle } from '@phosphor-icons/react/dist/ssr';
-import { BackgroundImage, Badge, Box, Card, Group, Overlay, Stack, Text } from '@mantine/core';
+import { Badge, Box, Card, Group, Overlay, Stack, Text } from '@mantine/core';
 
 interface Player {
   id: number;
@@ -41,15 +42,17 @@ export default function RosterCard({
       component={Link}
       href={`/roster/${player.id}`}
     >
-      <Card.Section pos="relative">
-        <BackgroundImage
+      <Card.Section pos="relative" style={{ height: height, width: height }}>
+        <Image
           src={
             player.headshot_url ||
             'https://media.istockphoto.com/id/613519648/photo/confident-proud-portrait-of-professional-water-polo-player-holding-ball.jpg?s=612x612&w=0&k=20&c=RHFugb7h-qnZJv4YnfIvaondapyHxyHCrioJNumcR84='
           }
-          h={height}
-          w={height}
-          style={{ objectFit: 'cover', aspectRatio: '1/1' }}
+          alt={`${player.name}'s headshot`}
+          fill
+          style={{ objectFit: 'cover' }}
+          sizes={`${height}px`}
+          unoptimized={true}
         />
         <Box pos="absolute" bottom={0} left={0} right={0} p="md">
           <Overlay
